@@ -6,6 +6,9 @@
   "scripts": {
     "test": "fox"
   },
+  "devDependencies": {
+    "fox": "*"
+  },
   "repository": {
     "url": "git@github.com:azer\/read-json.git",
     "type": "git"
