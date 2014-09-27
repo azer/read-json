@@ -2,7 +2,6 @@ var fs = require("fs");
 
 module.exports = readJSON;
 
-function readJSON(filename, callback){
 function readJSON(filename, options, callback){
   if(callback === undefined){
     callback = options;
@@ -13,7 +12,7 @@ function readJSON(filename, options, callback){
     if(error) return callback(error);
 
     try {
-      bf = JSON.parse(bf.toString());
+      bf = JSON.parse(bf.toString().replace(/^\ufeff/g, ''));
     } catch (err) {
       callback(err);
       return;
