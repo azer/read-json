@@ -4,15 +4,15 @@
   "description": "Reads and parses a JSON file.",
   "main": "index.js",
   "scripts": {
-    "test": "fox"
+    "test": "prova test"
   },
   "devDependencies": {
-    "fox": "*"
+    "prova": "^1.14.3"
   },
   "repository": {
-    "url": "git@github.com:azer\/read-json.git",
+    "url": "git@github.com:azer/read-json.git",
     "type": "git"
   },
-  "author": "Azer Ko\u00e7ulu <azer@kodfabrik.com>",
+  "author": "Azer Koçulu <azer@kodfabrik.com>",
   "license": "BSD"
 }

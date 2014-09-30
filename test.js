@@ -1,17 +1,16 @@
+var test = require('prova');
 var readJSON = require("./");
 
-it('reads a JSON file', function(done){
-
+test('reads a JSON file', function (t) {
   readJSON('./package.json', function(error, manifest){
-    expect(manifest.name).to.equal('read-json');
-    done();
+    t.equal(manifest.name, 'read-json');
+    t.end();
   });
 });
 
-it('supports fs.readFile options', function(done){
-
+test('supports fs.readFile options', function (t) {
   readJSON('./package.json', {encoding: 'utf-8'}, function(error, manifest){
-    expect(manifest.name).to.equal('read-json');
-    done();
+    t.equal(manifest.name, 'read-json');
+    t.end();
   });
 });
