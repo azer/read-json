@@ -9,15 +9,26 @@ function readJSON(filename, options, callback){
   }
 
   fs.readFile(filename, options, function(error, bf){
-    if(error) return callback(error);
+    var json;
+    
+    if (!error)
+      error = try(function() {
+        json = JSON.parse(bf);
+      });
+    
+    callback(error, json);
+  });
+}
 
-    try {
-      bf = JSON.parse(bf.toString().replace(/^\ufeff/g, ''));
+function try(fn) {
+  var error;
+  
+  try {
+      fn();
     } catch (err) {
-      callback(err);
+      error = err;
       return;
     }
-
-    callback(undefined, bf);
-  });
+  
+  return error;
 }
