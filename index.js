@@ -8,11 +8,11 @@ function readJSON(filename, options, callback){
     options = {};
   }
 
-  fs.readFile(filename, options, function(error, bf){
+  fs.readFile(filename, 'utf8', function(error, bf){
     if(error) return callback(error);
 
     try {
-      bf = JSON.parse(bf.toString().replace(/^\ufeff/g, ''));
+      bf = JSON.parse(bf);
     } catch (err) {
       callback(err);
       return;
