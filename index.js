@@ -12,7 +12,7 @@ function readJSON(filename, options, callback){
     var json;
     
     if (!error)
-      error = try(function() {
+      error = tryCatch(function() {
         json = JSON.parse(bf);
       });
     
@@ -20,7 +20,7 @@ function readJSON(filename, options, callback){
   });
 }
 
-function try(fn) {
+function tryCatch(fn) {
   var error;
   
   try {
