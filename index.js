@@ -1,4 +1,5 @@
-var fs = require("fs");
+var fs = require("fs"),
+    tryit = require("tryit");
 
 module.exports = readJSON;
 
@@ -12,23 +13,12 @@ function readJSON(filename, options, callback){
     var json;
     
     if (!error)
-      error = tryCatch(function() {
+      error = tryit(function() {
         json = JSON.parse(bf);
+      }, function(err) {
+        error = err;
       });
     
     callback(error, json);
   });
-}
-
-function tryCatch(fn) {
-  var error;
-  
-  try {
-      fn();
-    } catch (err) {
-      error = err;
-      return;
-    }
-  
-  return error;
 }
