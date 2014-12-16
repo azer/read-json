@@ -10,11 +10,14 @@ function readJSON(filename, options, callback){
   }
 
   fs.readFile(filename, options, function(error, bf){
-    var json;
+    var json,
+        str = bf
+            .tString()
+            .replace(/^\ufeff/g, '');
     
     if (!error)
-      error = tryit(function() {
-        json = JSON.parse(bf);
+      tryit(function() {
+        json = JSON.parse(str);
       }, function(err) {
         error = err;
       });
