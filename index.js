@@ -1,4 +1,5 @@
-var fs = require("fs");
+var fs = require("fs"),
+    tryit = require("tryit");
 
 module.exports = readJSON;
 
@@ -9,15 +10,18 @@ function readJSON(filename, options, callback){
   }
 
   fs.readFile(filename, options, function(error, bf){
-    if(error) return callback(error);
-
-    try {
-      bf = JSON.parse(bf.toString().replace(/^\ufeff/g, ''));
-    } catch (err) {
-      callback(err);
-      return;
-    }
-
-    callback(undefined, bf);
+    var json,
+        str = bf
+            .tString()
+            .replace(/^\ufeff/g, '');
+    
+    if (!error)
+      tryit(function() {
+        json = JSON.parse(str);
+      }, function(err) {
+        error = err;
+      });
+    
+    callback(error, json);
   });
 }

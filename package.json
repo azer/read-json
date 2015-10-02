@@ -6,6 +6,9 @@
   "scripts": {
     "test": "prova test"
   },
+  "dependencies": {
+    "tryit": "~1.0.0"
+  },
   "devDependencies": {
     "prova": "^1.14.3"
   },
