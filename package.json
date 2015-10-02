@@ -14,5 +14,8 @@
     "type": "git"
   },
   "author": "Azer Koçulu <azer@kodfabrik.com>",
-  "license": "BSD"
+  "license": "BSD",
+  "dependencies": {
+    "try-call": "0.0.0"
+  }
 }
