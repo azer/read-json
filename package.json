@@ -1,6 +1,6 @@
 {
   "name": "read-json",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Reads and parses a JSON file.",
   "main": "index.js",
   "scripts": {
