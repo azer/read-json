@@ -1,9 +1,10 @@
 var fs = require("fs");
 var call = require("try-call");
 
-module.exports = readJSON;
+module.exports = async;
+module.exports.sync = sync;
 
-function readJSON(filename, options, callback){
+function async (filename, options, callback) {
   if(arguments.length == 2){
     callback = options;
     options = {};
@@ -13,9 +14,12 @@ function readJSON(filename, options, callback){
     if(error) return callback(error);
     call(parse.bind(null, bf), callback);
   });
+}
 
-  function parse (bf) {
-    return JSON.parse(bf.toString().replace(/^\ufeff/g, ''));
-  }
+function sync (filename, options) {
+  return parse(fs.readFileSync(filename, options));
+}
 
+function parse (bf) {
+  return JSON.parse(bf.toString().replace(/^\ufeff/g, ''));
 }
